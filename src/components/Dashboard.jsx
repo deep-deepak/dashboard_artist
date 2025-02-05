@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
-import { Moon, Sun, Home, BarChart2, FileText, Settings, MenuIcon, FilePlus, FileMinus, ChevronRight, ChevronDown } from 'lucide-react';
+import { Moon, Sun, Home, BarChart2, FileText, Settings, MenuIcon, FilePlus, FileMinus, ChevronRight, ChevronDown, User2Icon } from 'lucide-react';
 import Setting from './Setting';
 import FormWithContact from '../form/FormWithContact';
 import FormWithoutContact from '../form/FormWithoutContact';
 import Donations from './Donation';
 import { useAuth } from '../context/AuthContext';
 import LoginForm from '../auth/Login';
+import UserForm from '../auth/UserForm';
 
 const Dashboard = () => {
 
@@ -65,13 +66,18 @@ const Dashboard = () => {
                 { id: 'settings', label: 'Settings', icon: Settings },
                 { id: 'logs', label: 'Logs', icon: FileText }
             ]
+        },
+        {
+            id: 'users',
+            label: 'Users',
+            icon: User2Icon
         }
     ];
 
     const getContent = () => {
         switch (activeMenuItem) {
             case 'donations': return <Donations />;
-
+            case 'users': return <UserForm />;
             case 'input-settings': return "InputSettings ";
             case 'form-with-contact': return <FormWithContact />;
             case 'form-without-contact': return <FormWithoutContact />;
